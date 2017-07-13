@@ -1,0 +1,21 @@
+.app {
+  height: 100vh;
+}
+
+.app-header {
+  margin: 0;
+  background-color: #222;
+  color: white;
+  text-align: center;
+}
+
+.app-header h2 {
+  margin: 0;
+  padding: 2rem;
+}
+
+@media (max-width: 600px) {
+  .app-header h2 {
+    padding: 1rem;
+  }
+}

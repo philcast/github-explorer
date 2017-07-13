@@ -1,0 +1,21 @@
+.repository-list {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.repository-name-filter {
+  width: 20rem; 
+  margin: 1rem 3rem 0.5rem 0;
+  padding: 0.5rem 1rem 0.5rem 3rem;
+  color: #CCC;
+  border: none;
+  border-bottom: #CCC 2px solid; 
+  font-size: 1.5rem;
+}
+
+.repository-name-filter:focus {
+  outline: none;
+  color: #888;
+  border-color: #888;
+}
