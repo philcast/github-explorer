@@ -21,7 +21,7 @@ export function fetchContributors(
   return (action$, store: Store) =>
     action$
       .ofType<RepositorySelected>('REPOSITORY_SELECTED')
-      .map(({ id }: RepositorySelected) => {
+      .map(({ id }) => {
         const state = store.getState();
         const repository = getRepository(state, id);
         const { login } = getUser(state, repository.owner);
@@ -32,7 +32,6 @@ export function fetchContributors(
       .flatMap(({ ownerLogin, repositoryId, repositoryName }) => api.fetchContributors(ownerLogin, repositoryName)
         // Do not break the action input stream, use a substream that will be flattened
         .timeout(api.timeout)
-        .do(e => console.log('fetched contributors', e))
         .map(users => contributorsLoaded(repositoryId, users))
         .catch(err => [appCrashed()])
       );

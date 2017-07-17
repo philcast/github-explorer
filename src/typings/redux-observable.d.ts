@@ -6,6 +6,6 @@ import 'redux-observable';
 
 declare module 'redux-observable' {
   interface ActionsObservable<T> {
-    ofType<AT extends { type: string }>(key: AT['type']): ActionsObservable<T>;
+    ofType<AT extends { type: string }>(key: AT['type']): ActionsObservable<AT>;
   }
 }

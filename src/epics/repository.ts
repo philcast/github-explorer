@@ -1,7 +1,8 @@
-import { Epic } from 'redux-observable';
 import { Observable, IScheduler } from 'rx';
+import { Epic } from 'redux-observable';
+import { Action } from 'redux';
 import { Repository, repositoriesLoaded } from 'state/entities/repository';
-import { AppState, Action, appCrashed } from 'state';
+import { AppState, appCrashed } from 'state';
 import { RepositorySearchTermChanged } from 'state/ui/repositoryPage';
 import { User } from 'state/entities/user';
 
@@ -22,7 +23,7 @@ export function searchRepository(
   return (action$, _) =>
     action$
       .ofType<RepositorySearchTermChanged>('REPOSITORY_SEARCH_TERM_CHANGED')
-      .map((e: RepositorySearchTermChanged) => e.searchTerm)
+      .map(e => e.searchTerm)
       .debounceTime(500)
       .distinctUntilChanged()
       .filter(e => !!e)
