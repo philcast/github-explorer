@@ -4,6 +4,7 @@ import { AppState, Action } from 'state';
 import { getRepository, getUser } from 'state/selectors';
 import { repositorySelected } from 'state/ui/repositoryPage';
 import { Dispatch } from 'redux';
+import Contributor from './Contributor';
 
 import './Repository.css';
 
@@ -29,6 +30,8 @@ interface DispatchProps {
   onRepositorySelected(): void;
 }
 
+export interface RepositoryProps extends OwnProps, StateProps, DispatchProps {}
+
 export const component = (props: OwnProps & StateProps & DispatchProps) => (
   <div className="repository" onClick={props.onRepositorySelected}>
     <img className="repository-avatar" src={`${props.ownerAvatarUrl}&size=150`} />
@@ -43,10 +46,14 @@ export const component = (props: OwnProps & StateProps & DispatchProps) => (
       <span className="repository-description">{props.description}</span>
       {
         props.selected
-        ? <span>contributors: {props.contributors.join(', ')}</span>
+        ? <div className="repository-contributors">
+            <span className="contributors-label">Contributors:</span>
+            <div className="contributors-list">
+              {props.contributors.map(contributorId => <Contributor id={contributorId} />)}
+            </div>
+          </div>
         : []
       }
-      <span>{props.contributors.join('|')}</span>
     </div>
   </div>
 );

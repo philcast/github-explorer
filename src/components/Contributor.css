@@ -1,0 +1,18 @@
+.contributor {
+  position: relative;
+  display: flex;
+  padding: 0.2rem;
+  background-color: #FFF;
+}
+.contributor:nth-child(2n+1) {
+  background-color: #EEE;
+}
+
+.contributor-avatar {
+  width: 24px;
+  height: 24px;
+}
+
+.contributor-login{
+  margin-left: 1rem;
+}

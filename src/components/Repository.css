@@ -65,3 +65,12 @@
   max-height: 6rem;
 }
 
+.repository-contributors {
+  margin-top: 1rem;
+  display: flex;
+}
+
+.contributors-label {
+  font-weight: bold;
+  margin-right: 1rem;
+}
