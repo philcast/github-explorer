@@ -23,8 +23,9 @@ function onRepositorySearchTermChanged(state: RepositoryPageState, { searchTerm 
 }
 
 function onRepositorySelected(state: RepositoryPageState, { id }: RepositorySelected) {
+  const alreadySelected = id === state.selection;
   return {
     ...state,
-    selection: id
+    selection: alreadySelected ? undefined : id
   };
 }
